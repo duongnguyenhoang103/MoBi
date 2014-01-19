@@ -24,14 +24,19 @@ public class ReadWriteRMS extends MIDlet implements CommandListener {
         text.addCommand(exitCommand);
         text.setCommandListener(this);
         display.setCurrent(text);
+        try {
+            openRMS();// Mở RMS
+            // Lưu  chuỗi
+            writeRMS("Họ tên: Nguyen Hoang Duong");
+            writeRMS("MSSV: 1271021561");
+            writeRMS("Mail: DuongNguyenHoang.103@gmail.com");
+            writeRMS("Bai thuc hanh so 6");
+            readRMS();// Đọc dữ liệu từ RMS rồi in ra màn hình
+            closeRMS();// Đóng RMS
+            deleteRMS();// Xóa dữ liệu trên RMS sau khi sử dụng
+        } catch (Exception e) {
+        }
 
-        openRMS();
-        writeRMS("Họ tên: Nguyễn Hoàng Dương");
-        writeRMS("MSSV: 1271021561");
-        writeRMS("Mail: DuongNguyenHoang.103@gmail.com");
-        readRMS();
-        closeRMS();
-        deleteRMS();
     }
 
     public void pauseApp() {
@@ -47,6 +52,9 @@ public class ReadWriteRMS extends MIDlet implements CommandListener {
         }
     }
 
+    /**
+     * Phương thức RMS để khởi tạo RMS
+     */
     private void openRMS() {
         try {
             rs = RecordStore.openRecordStore(RMS_NAME, true);
@@ -55,6 +63,9 @@ public class ReadWriteRMS extends MIDlet implements CommandListener {
         }
     }
 
+    /**
+     * Phương thức writeRMS để lưu một chuỗi vào RMS
+     */
     private void writeRMS(String s) {
         byte[] b = s.getBytes();
         try {
@@ -64,6 +75,9 @@ public class ReadWriteRMS extends MIDlet implements CommandListener {
         }
     }
 
+    /**
+     * Phương thức readRMS để đọc dữ liệu trên RMS rồi in ra màn hình
+     */
     private void readRMS() {
         try {
             String data = "", s;
@@ -88,6 +102,9 @@ public class ReadWriteRMS extends MIDlet implements CommandListener {
         }
     }
 
+    /**
+     * Phương thức close để đóng RMS
+     */
     private void closeRMS() {
         try {
             rs.closeRecordStore();
@@ -96,6 +113,9 @@ public class ReadWriteRMS extends MIDlet implements CommandListener {
         }
     }
 
+    /**
+     * Phương thức deleteRMS để xóa dữ liệu trên RMS
+     */
     private void deleteRMS() {
         try {
             RecordStore.deleteRecordStore(RMS_NAME);

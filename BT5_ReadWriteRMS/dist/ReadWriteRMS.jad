@@ -1,0 +1,8 @@
+MIDlet-1: ReadWriteRMS,,hello.ReadWriteRMS
+MIDlet-Jar-Size: 2656
+MIDlet-Jar-URL: ReadWriteRMS.jar
+MIDlet-Name: ReadWriteRMS
+MIDlet-Vendor: Vendor
+MIDlet-Version: 1.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
